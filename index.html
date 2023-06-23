@@ -1,40 +1,191 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Portfolio</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio</title>
 <style>
-	html {
-    	background-color: #abd8fb;
-        color: #abd8fb;
-    }
+* { box-sizing: border-box; }
+html {
+	background-color: #abd8fb;
+	color: #fff;
+}
+
+body { 
+	font-family: sans-serif;
+	text-align: center;
+}
+
+a {
+	text-decoration: none;
+}
+
+li {
+	padding: 10px;
+}
+
+a:hover {
+	color: white;
+	transition: 0.3s;
+}
+
+.radio-group {
+    display: flex;
+  	justify-content: center;
     
-    body {
-    	background-color: rgba(255,255,255,0.8);
-        padding: 10px;
-        border-radius: 25px;
-    }
-    
-    h1 {
-    	text-align: center;
-    }
-    
-    li {
-    	padding-bottom: 10px;
-    }
+}
+
+.scene {
+	width: 400px;
+	height: 400px;
+	border: 1px solid #CCC;
+	margin: 0 auto;
+	perspective: 800px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.cube {
+	width: 300px;
+	height: 300px;
+	position: relative;
+	transform-style: preserve-3d;
+	transform: translateZ(-200px);
+	transition: transform 1s;
+}
+
+.cube.show-front  { transform: translateZ(-200px) rotateY(0deg); }
+.cube.show-right  { transform: translateZ(-200px) rotateY(-90deg); }
+.cube.show-back   { transform: translateZ(-200px) rotateY(-180deg); }
+.cube.show-left   { transform: translateZ(-200px) rotateY(-270deg); }
+.cube.show-top    { transform: translateZ(-200px) rotateX(-90deg); }
+.cube.show-bottom { transform: translateZ(-200px) rotateX(90deg); }
+
+.cube__face {
+	position: absolute;
+	width: 300px;
+	height: 300px;
+	border: 2px solid #fff;
+	line-height: 1;
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+}
+
+.cube__face ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.cube__face ul li {
+	margin-bottom: 10px;
+}
+
+.unit {
+	font-size: 30px;
+}
+
+.cube__face--front  { background: hsla(0, 100%, 50%, 0.8); }
+.cube__face--right  { background: hsla(60, 100%, 50%, 0.8); }
+.cube__face--back   { background: hsla(120, 100%, 50%, 0.8); }
+.cube__face--left   { background: hsla(180, 100%, 50%, 0.8); }
+.cube__face--top    { background: hsla(240, 100%, 50%, 0.8); }
+.cube__face--bottom { background: hsla(300, 100%, 50%, 0.8); }
+
+.cube__face--front  { transform: rotateY(0deg) translateZ(150px); }
+.cube__face--right  { transform: rotateY(90deg) translateZ(150px); }
+.cube__face--back   { transform: rotateY(180deg) translateZ(150px); }
+.cube__face--left   { transform: rotateY(-90deg) translateZ(150px); }
+.cube__face--top    { transform: rotateX(90deg) translateZ(150px); }
+.cube__face--bottom { transform: rotateX(-90deg) translateZ(150px); }
+
+label { margin-right: 10px; }
 </style>
-</head>
 <body>
 <h1>CS120 Assignment Portfolio - Alyssa Williams</h1>
-<ul>
-	<li><a href="https://skookuri.github.io/cs120hw1/">HW 1 HTML Problem Set Part 2 Github</a></li>
-    <li><a href="https://alyssaw1.sg-host.com/cs120hw1.html">HW 1 HTML Problem Set Part 2 cPanel</a></li>
-    <li><a href="https://skookuri.github.io/cs120hw2/">HW 2 CSS Problem Set</a></li>
-    <li><a href="https://skookuri.github.io/cs120hw3/">HW 3 Javascript Problem Set 1</a></li>
-    <li><a href="https://skookuri.github.io/cs120project1/">Project 1: Wedding Band Website</a></li>
-	<li><a href="https://skookuri.github.io/cs120hw4/">HW 4 Javascript Problem Set 2</a></li>
-    <li><a href="https://skookuri.github.io/cs120hw5/">HW 5 Javascript Problem Set 3</a></li>
-</ul>
+<p class="radio-group">
+  <label>
+    <input type="radio" name="rotate-cube-side" value="front" checked /> Unit 1
+  </label>
+  <label>
+    <input type="radio" name="rotate-cube-side" value="right" /> Unit 2
+  </label>
+  <label>
+    <input type="radio" name="rotate-cube-side" value="back" /> Unit 3
+  </label>
+  <label>
+    <input type="radio" name="rotate-cube-side" value="left" /> Unit 4
+  </label>
+  <label>
+    <input type="radio" name="rotate-cube-side" value="top" /> Final
+  </label>
+  <label>
+    <input type="radio" name="rotate-cube-side" value="bottom" /> Misc
+  </label>
+</p>
+<div class="scene">
+	<div class="cube">
+		<div class="cube__face cube__face--front">
+			<div class="unit">Unit 1</div>
+			<ul>
+        		<li><a href="https://skookuri.github.io/cs120hw1/">HW 1 HTML Problem Set Part 2 Github</a></li>
+        		<li><a href="https://alyssaw1.sg-host.com/cs120hw1.html">HW 1 HTML Problem Set Part 2 cPanel</a></li>
+        		<li><a href="https://skookuri.github.io/cs120hw2/">HW 2 CSS Problem Set</a></li>
+                <li><a href="https://skookuri.github.io/cs120project1/">Project 1: Wedding Band Website</a></li>
+      		</ul>
+    	</div>
+    	<div class="cube__face cube__face--right">
+			<div class="unit">Unit 2</div>
+			<ul>
+        	    <li><a href="https://skookuri.github.io/cs120hw3/">HW 3 Javascript Problem Set 1</a></li>
+				<li><a href="https://skookuri.github.io/cs120hw4/">HW 4 Javascript Problem Set 2</a></li>
+    			<li><a href="https://skookuri.github.io/cs120hw5/">HW 5 Javascript Problem Set 3</a></li>
+                <li><a href="https://skookuri.github.io/cs120project2/">Project 2: Wordle</a></li>
+      		</ul>
+    	</div>
+    	<div class="cube__face cube__face--back">
+      		<div class="unit">Unit 3</div>
+            <ul>
+
+            </ul>
+    	</div>
+    	<div class="cube__face cube__face--left">
+      		<div class="unit">Unit 4</div>
+    	</div>
+    	<div class="cube__face cube__face--top">
+      		<div class="unit">Final</div>
+    	</div>
+    	<div class="cube__face cube__face--bottom">
+      		<div class="unit">Misc</div>
+    	</div>
+  </div>
+</div>
+<script>
+var cube = document.querySelector('.cube');
+var radioGroup = document.querySelector('.radio-group');
+var currentClass = '';
+
+function changeSide() {
+  var checkedRadio = radioGroup.querySelector(':checked');
+  var showClass = 'show-' + checkedRadio.value;
+  if (currentClass) {
+    cube.classList.remove(currentClass);
+  }
+  cube.classList.add(showClass);
+  currentClass = showClass;
+}
+// set initial side
+changeSide();
+
+radioGroup.addEventListener('change', changeSide);
+</script>
 </body>
 </html>
